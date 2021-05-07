@@ -1,0 +1,28 @@
+﻿<html lang=fr>
+<head>
+<script src="js/polyglot.js"></script>
+<script>
+
+var polyglot = new Polyglot();
+
+polyglot.extend({
+    "description": "Test de traduction basée sur polyglot",
+    "hello": "bonjour",
+    "howareyou": "Comment allez-vous aujourd'hui?",
+    "button": "changer la langue",
+});
+
+document.$("p").innerHTML = polyglot.t("description");
+document.$("span#hello").innerHTML = polyglot.t("hello");
+document.$("span#howareyou").innerHTML = polyglot.t("howareyou");
+document.$("button").innerHTML = polyglot.t("button");
+
+</script>
+</head>
+<body>
+    <p> Testing translation using css inclusion </p>
+    <span #hello> hello </span>
+    <span #howareyou> how are you today? </span>
+    <button>change language</button>
+</body>
+</html>
