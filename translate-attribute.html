@@ -1,0 +1,34 @@
+﻿<!--
+https://sciter.com/forums/topic/localization/#post-44991
+-->
+<html>
+<head>
+<script>
+
+const dict = {
+    "description": "Test de traduction basée sur attribute",
+    "hello": "bonjour",
+    "howareyou": "comment allez-vous aujourd'hui?",
+    "button": "changer la langue",
+};
+
+document.ready = function() {
+    // get all html elements
+    document.$$("*[tr]").map(function (element) {
+        // get element tr attribute
+        const id = element.getAttribute("tr");
+
+        // translate element
+        element.innerHTML = dict[id];
+    });
+};
+
+</script>
+</head>
+<body>
+    <p tr="description"> Testing translation using attribute </p>
+    <span tr="hello"> hello </span>
+    <span tr="howareyou"> how are you today? </span>
+    <button tr="button">change language</button>
+</body>
+</html>
