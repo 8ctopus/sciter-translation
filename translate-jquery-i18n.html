@@ -1,0 +1,44 @@
+﻿<html lang=fr>
+<head>
+<!-- lightweight port of jquery -->
+<script src="js/zepto.js"></script>
+<script src="js/jquery.i18n.js"></script>
+<script>
+
+console.log($("#hello"));
+
+$.i18n({
+    locale: 'fr'
+});
+
+//$.i18n.init({ lng: "en-US" });
+
+//console.log($.i18n().getDefaultLocale());
+
+/*
+$.i18n().load({
+    "description": "Test de traduction basée sur jquery i18n",
+    "hello": "bonjour %{name},",
+    "howareyou": "comment allez-vous aujourd'hui?",
+    "button": "changer la langue",
+}, 'fr');
+
+document.$("p").innerHTML = $.i18n("description");
+document.$("span#hello").innerHTML = $.i18n("hello", {"name": "sciter"});
+document.$("span#howareyou").innerHTML = $.i18n("howareyou");
+document.$("button").innerHTML = $.i18n("button");
+
+Zepto(function($){
+  alert('Ready to Zepto!')
+})
+*/
+
+</script>
+</head>
+<body>
+    <p> Testing translation using css inclusion </p>
+    <span #hello> hello </span>
+    <span #howareyou> how are you today? </span>
+    <button>change language</button>
+</body>
+</html>
