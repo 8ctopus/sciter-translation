@@ -23,8 +23,11 @@ for (let file of list) {
         continue;
 
     // keep only grid*.html files
-    if (file.name.startsWith("translate") && file.name.endsWith(".html"))
-        files.push(file.name.replace(".html", ""));
+    if (file.name.startsWith("translate") && file.name.endsWith(".html")) {
+        file = file.name.replace("translate-", "");
+        file = file.replace(".html", "");
+        files.push(file);
+    }
 }
 
 // get element to append buttons
@@ -42,7 +45,7 @@ files.forEach(function (file) {
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
     // get file name from button
-    let file = button.innerHTML + ".html";
+    let file = "translate-" + button.innerHTML + ".html";
 
     // get element to insert code in
     let include = document.$("iframe");
