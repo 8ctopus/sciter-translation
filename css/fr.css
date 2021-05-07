@@ -1,0 +1,11 @@
+﻿p {
+    content: "Test de traduction basée sur l'inclusion css";
+}
+
+span#hello {
+    content: "bonjour";
+}
+
+span#howareyou {
+    content: "Comment allez-vous aujourd'hui?";
+}
