@@ -9,3 +9,7 @@ span#hello {
 span#howareyou {
     content: "Comment allez-vous aujourd'hui?";
 }
+
+button {
+    content: "changer la langue";
+}

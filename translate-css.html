@@ -2,10 +2,25 @@
 <head>
 <!--style src="css/en.css" forlang="en,en-ca" /-->
 <style src="css/fr.css" forlang="fr" />
+<script>
+
+document.$("button").onclick = function() {
+//    console.log("lang - " + Window.this.lang);
+//    lang = (lang == "fr") ? "en" : "fr";
+
+//    console.log(document.head.$("html").getAttribute("lang"));//;.setAttribute("lang", "en");
+
+//    document.head.setAttribute("lang", "en");
+//    console.log(document.documentElement.lang);
+    console.log(document.$("html").attr("lang"));
+}
+
+</script>
 </head>
 <body>
     <p> Testing translation using css inclusion </p>
     <span #hello> hello </span>
     <span #howareyou> how are you today? </span>
+    <button>change language</button>
 </body>
 </html>
