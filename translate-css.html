@@ -4,7 +4,7 @@
 <style src="css/fr.css" forlang="fr" />
 <script>
 
-document.$("button").onclick = function() {
+document.$("button").on("click", function() {
 //    console.log("lang - " + Window.this.lang);
 //    lang = (lang == "fr") ? "en" : "fr";
 
@@ -12,8 +12,8 @@ document.$("button").onclick = function() {
 
 //    document.head.setAttribute("lang", "en");
 //    console.log(document.documentElement.lang);
-    console.log(document.$("html").attr("lang"));
-}
+    console.log(document.getAttribute("lang"));
+});
 
 </script>
 </head>
