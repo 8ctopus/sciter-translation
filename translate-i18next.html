@@ -15,24 +15,26 @@ let fr = {
     }
 };
 
-// init translation system
-next.init({
-    lng: "fr",
-    debug: true,
-    resources: {
-        fr: fr,
-    }
-}, function(err, t) {});
+document.on("ready", function() {
+    // init translation system
+    next.init({
+        lng: "fr",
+        debug: true,
+        resources: {
+            fr: fr,
+        }
+    }, function(err, t) {});
 
-document.$("p").innerHTML = next.t("description");
-document.$("span#hello").innerHTML = next.t("hello");
-document.$("span#howareyou").innerHTML = next.t("howareyou");
-document.$("button").innerHTML = next.t("button");
+    document.$("p").innerHTML = next.t("description");
+    document.$("span#hello").innerHTML = next.t("hello");
+    document.$("span#howareyou").innerHTML = next.t("howareyou");
+    document.$("button").innerHTML = next.t("button");
+});
 
 </script>
 </head>
 <body>
-    <p> Testing translation using css inclusion </p>
+    <p> Testing translation using i18next </p>
     <span #hello> hello </span>
     <span #howareyou> how are you today? </span>
     <button>change language</button>

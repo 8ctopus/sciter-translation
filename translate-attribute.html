@@ -12,7 +12,7 @@ const dict = {
     "button": "changer la langue",
 };
 
-document.ready = function() {
+document.on("ready", function() {
     // get all html elements
     document.$$("*[tr]").map(function(element) {
         // get element tr attribute
@@ -21,7 +21,7 @@ document.ready = function() {
         // translate element
         element.innerHTML = dict[id];
     });
-};
+});
 
 </script>
 </head>
