@@ -3,36 +3,36 @@
 <script src="js/i18next.js"></script>
 <script>
 
-// declare a global variable so it can be seen in children frames
-var next = i18next;
-
-let fr = {
-    translation: {
-        "description": "Test de traduction basée sur i18next",
-        "hello": "bonjour",
-        "howareyou": "Comment allez-vous aujourd'hui?",
-        "button": "changer la langue",
-    }
-};
-
 document.on("ready", function() {
+    // create i18next object
+    const next = i18next;
+
     // init translation system
     next.init({
         lng: "fr",
         debug: true,
         resources: {
-            fr: fr,
+            fr: {
+                translation: {
+                    "description": "Test de traduction basée sur i18next",
+                    "hello": "bonjour",
+                    "howareyou": "Comment allez-vous aujourd'hui?",
+                    "button": "changer la langue",
+                }
+            },
         }
     }, (err, t) => {
         if (err) {
             console.log(`Init i18next - FAILED - ${err}`);
             return;
         }
+        else
+            console.log(`Init i18next - OK`);
 
-        document.$("p").innerHTML = next.t("description");
-        document.$("span#hello").innerHTML = next.t("hello");
-        document.$("span#howareyou").innerHTML = next.t("howareyou");
-        document.$("button").innerHTML = next.t("button");
+        document.$("p").innerHTML = t("description");
+        document.$("span#hello").innerHTML = t("hello");
+        document.$("span#howareyou").innerHTML = t("howareyou");
+        document.$("button").innerHTML = t("button");
     });
 });
 
