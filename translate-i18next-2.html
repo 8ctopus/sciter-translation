@@ -12,9 +12,17 @@ async function init()
 {
     // init translation system
     const promise = next.init({
-        lng: "fr",
+        lng: "de",
         debug: true,
         resources: {
+            de: {
+                translation: {
+                    "description": "Übersetztung Probe mit i18next",
+                    "hello": "hallo",
+                    "howareyou": "Wie geht es dir heute?",
+                    "button": "Sprache ändern",
+                }
+            },
             fr: {
                 translation: {
                     "description": "Test de traduction basée sur i18next",
@@ -22,7 +30,7 @@ async function init()
                     "howareyou": "Comment allez-vous aujourd'hui?",
                     "button": "changer la langue",
                 }
-            },
+            }
         }
     });
 
