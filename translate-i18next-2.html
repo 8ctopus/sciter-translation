@@ -5,8 +5,10 @@
 
 async function init()
 {
+    // create i18next object
     const next = i18next;
 
+    // init translation system
     const promise = next.init({
         lng: "fr",
         debug: true,
@@ -23,7 +25,9 @@ async function init()
     });
 
     try {
+        // wait for promise
         const result = await promise;
+
         console.log(`Init i18next - OK`);
 
         document.$("p").innerHTML = next.t("description");
