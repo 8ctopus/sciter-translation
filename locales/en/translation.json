@@ -1,0 +1,8 @@
+{
+    "translation": {
+        "description": "Testing translation using i18next",
+        "hello": "hello",
+        "howareyou": "how are you today?",
+        "button": "change language (fallback)"
+    }
+}

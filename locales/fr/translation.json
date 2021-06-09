@@ -1,0 +1,8 @@
+{
+    "translation": {
+        "description": "Test de traduction basée sur i18next",
+        "hello": "bonjour",
+        "howareyou": "Comment allez-vous aujourd'hui?",
+        "button": "changer la langue"
+    }
+}
