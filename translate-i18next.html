@@ -21,7 +21,7 @@ document.on("ready", function() {
                 }
             },
         }
-    }, (err, t) => {
+    }, function(err, t) {
         if (err) {
             console.log(`Init i18next - FAILED - ${err}`);
             return;
