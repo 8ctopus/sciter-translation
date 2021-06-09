@@ -23,12 +23,17 @@ document.on("ready", function() {
         resources: {
             fr: fr,
         }
-    }, function(err, t) {});
+    }, (err, t) => {
+        if (err) {
+            console.log(`Init i18next - FAILED - ${err}`);
+            return;
+        }
 
-    document.$("p").innerHTML = next.t("description");
-    document.$("span#hello").innerHTML = next.t("hello");
-    document.$("span#howareyou").innerHTML = next.t("howareyou");
-    document.$("button").innerHTML = next.t("button");
+        document.$("p").innerHTML = next.t("description");
+        document.$("span#hello").innerHTML = next.t("hello");
+        document.$("span#howareyou").innerHTML = next.t("howareyou");
+        document.$("button").innerHTML = next.t("button");
+    });
 });
 
 </script>
