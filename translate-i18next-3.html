@@ -1,0 +1,103 @@
+﻿<html>
+<head>
+<script type="module">
+
+//import i18next from 'https://raw.githubusercontent.com/i18next/i18next/master/src/index.js';
+import i18next from 'https://deno.land/x/i18next/index.js';
+//import backend from 'https://deno.land/x/i18next_fs_backend/index.js';
+
+var _init = false;
+
+const resources = {
+    en: {
+        translation: {
+            "description": "Testing translation using i18next",
+            "hello": "hello",
+            "howareyou": "how are you today?",
+            "button": "change language (fallback)",
+        }
+    },
+    fr: {
+        translation: {
+            "description": "Test de traduction basée sur i18next",
+            "hello": "bonjour",
+            "howareyou": "Comment allez-vous aujourd'hui?",
+            "button": "changer la langue",
+        }
+    },
+    de: {
+        translation: {
+            "description": "Übersetztung Probe mit i18next",
+            "hello": "hallo",
+            "howareyou": "Wie geht es dir heute?",
+            //"button": "Sprache ändern",
+        }
+    }
+};
+
+async function init()
+{
+    // init translation system
+    const promise = i18next
+        //.use(backend)
+        .init({
+            debug: true,
+
+            lng: "de",
+            // show en if translation is not available
+            fallbackLng: "en",
+
+            defaultNS: "translation",
+
+            resources: resources,
+
+            /*
+            backend: {
+                loadPath: 'locales/{{lng}}/{{ns}}.json',
+            }*/
+        });
+
+    try {
+        // wait for promise
+        const result = await promise;
+
+        _init = true;
+
+        console.log(`Init i18next - OK`);
+    }
+    catch (error) {
+        console.log(`Init i18next - FAILED - ${error}`);
+    }
+}
+
+function translate()
+{
+    // wait for i18next to be initialized
+    while (!_init) {
+        console.log(`Init i18next (2) - WAITING`);
+        setTimeout(translate, 1);
+        return;
+    }
+
+    console.log(`Init i18next (2) - OK`);
+
+    document.$("p").innerHTML              = i18next.t("description");
+    document.$("span#hello").innerHTML     = i18next.t("hello");
+    document.$("span#howareyou").innerHTML = i18next.t("howareyou");
+    document.$("button").innerHTML         = i18next.t("button");
+}
+
+document.on("ready", function() {
+    init();
+    translate();
+});
+
+</script>
+</head>
+<body>
+    <p> Testing translation using i18next </p>
+    <span #hello> hello </span>
+    <span #howareyou> how are you today? </span>
+    <button>change language</button>
+</body>
+</html>
