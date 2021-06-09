@@ -10,28 +10,40 @@ var _init = false;
 
 async function init()
 {
+    const resources = {
+        en: {
+            translation: {
+                "description": "Testing translation using i18next",
+                "hello": "hello",
+                "howareyou": "how are you today?",
+                "button": "change language (fallback)",
+            }
+        },
+        fr: {
+            translation: {
+                "description": "Test de traduction basée sur i18next",
+                "hello": "bonjour",
+                "howareyou": "Comment allez-vous aujourd'hui?",
+                "button": "changer la langue",
+            }
+        },
+        de: {
+            translation: {
+                "description": "Übersetztung Probe mit i18next",
+                "hello": "hallo",
+                "howareyou": "Wie geht es dir heute?",
+                //"button": "Sprache ändern",
+            }
+        }
+    };
+
     // init translation system
     const promise = next.init({
         lng: "de",
         debug: true,
-        resources: {
-            de: {
-                translation: {
-                    "description": "Übersetztung Probe mit i18next",
-                    "hello": "hallo",
-                    "howareyou": "Wie geht es dir heute?",
-                    "button": "Sprache ändern",
-                }
-            },
-            fr: {
-                translation: {
-                    "description": "Test de traduction basée sur i18next",
-                    "hello": "bonjour",
-                    "howareyou": "Comment allez-vous aujourd'hui?",
-                    "button": "changer la langue",
-                }
-            }
-        }
+        resources: resources,
+        // show en if translation is not available
+        fallbackLng: "en",
     });
 
     try {
