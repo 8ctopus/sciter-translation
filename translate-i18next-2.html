@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+<script src="js/i18next.js"></script>
+<script>
+
+async function init()
+{
+    const next = i18next;
+
+    let fr = {
+        translation: {
+            "description": "Test de traduction basée sur i18next",
+            "hello": "bonjour",
+            "howareyou": "Comment allez-vous aujourd'hui?",
+            "button": "changer la langue",
+        }
+    };
+
+    const promise = next.init({
+        lng: "fr",
+        debug: true,
+        resources: {
+            fr: fr,
+        }
+    });
+
+    try {
+        const result = await promise;
+        //console.log(`Wait for promise - OK - ${result}`);
+
+        document.$("p").innerHTML = next.t("description");
+        document.$("span#hello").innerHTML = next.t("hello");
+        document.$("span#howareyou").innerHTML = next.t("howareyou");
+        document.$("button").innerHTML = next.t("button");
+    }
+    catch (error) {
+        console.log(`Wait for promise - CATCH - ${error}`);
+    }
+}
+
+document.on("ready", function() {
+    init();
+});
+
+</script>
+</head>
+<body>
+    <p> Testing translation using i18next </p>
+    <span #hello> hello </span>
+    <span #howareyou> how are you today? </span>
+    <button>change language</button>
+</body>
+</html>
