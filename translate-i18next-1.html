@@ -30,10 +30,10 @@ document.on("ready", function() {
 
         lng: "fr",
 
-        ns: ['namespace1', 'namespace2'],
+        ns: ["namespace1", "namespace2"],
 
         // namespace to use when only translation key is specified
-        defaultNS: 'namespace1',
+        defaultNS: "namespace1",
 
         resources: {
             fr: {
@@ -50,10 +50,10 @@ document.on("ready", function() {
                     catsanddogs: "Il y a {{cats}} chats et {{dogs}} chiens dans la pièce.",
                 },
                 namespace3: {
-                    "key": "item",
-                    "key_plural": "items",
-                    "keyWithCount": "{{count}} item",
-                    "keyWithCount_plural": "{{count}} items",
+                    key: "item",
+                    key_plural: "items",
+                    keyWithCount: "{{count}} item",
+                    keyWithCount_plural: "{{count}} items",
                 },
             },
         }
@@ -87,14 +87,19 @@ document.on("ready", function() {
     // https://www.i18next.com/translation-function/interpolation
     document.$("label#l2").innerHTML = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
 
-    addLine(i18next.t('namespace3:key', {count: 0})); // -> "items"
-    addLine(i18next.t('namespace3:key', {count: 1})); // -> "item"
-    addLine(i18next.t('namespace3:key', {count: 5})); // -> "items"
-    addLine(i18next.t('namespace3:key', {count: 100})); // -> "items"
-    addLine(i18next.t('namespace3:keyWithCount', {count: 0})); // -> "0 items"
-    addLine(i18next.t('namespace3:keyWithCount', {count: 1})); // -> "1 item"
-    addLine(i18next.t('namespace3:keyWithCount', {count: 5})); // -> "5 items"
-    addLine(i18next.t('namespace3:keyWithCount', {count: 100})); // -> "100 items"
+    // plurals (not fully working for some reason)
+    addLine(i18next.t("namespace3:key", {count: 0})); // -> "items"
+    addLine(i18next.t("namespace3:key", {count: 1})); // -> "item"
+    addLine(i18next.t("namespace3:key", {count: 5})); // -> "items"
+    addLine(i18next.t("namespace3:key", {count: 100})); // -> "items"
+    addLine(i18next.t("namespace3:keyWithCount", {count: 0})); // -> "0 items"
+    addLine(i18next.t("namespace3:keyWithCount", {count: 1})); // -> "1 item"
+    addLine(i18next.t("namespace3:keyWithCount", {count: 5})); // -> "5 items"
+    addLine(i18next.t("namespace3:keyWithCount", {count: 100})); // -> "100 items"
+
+    // fallback
+    // when key value does not exist, the key is returned
+    addLine(i18next.t("notexistingkey"));
 });
 
 /**
