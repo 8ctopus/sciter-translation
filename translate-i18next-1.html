@@ -48,7 +48,13 @@ document.on("ready", function() {
                 namespace2: {
                     label: "Bonjour depuis le 2ème namespace.",
                     catsanddogs: "Il y a {{cats}} chats et {{dogs}} chiens dans la pièce.",
-                }
+                },
+                namespace3: {
+                    "key": "item",
+                    "key_plural": "items",
+                    "keyWithCount": "{{count}} item",
+                    "keyWithCount_plural": "{{count}} items",
+                },
             },
         }
     }, function(err, t) {
@@ -62,6 +68,7 @@ document.on("ready", function() {
     // since the call to init was synchronous, translation can start now
 
     // translate element with key
+    // https://www.i18next.com/translation-function/essentials
     document.$("p").innerHTML = next.t("description");
 
     // translate element with namespace:key
@@ -77,8 +84,27 @@ document.on("ready", function() {
     document.$("label#l1").innerHTML = next.t("namespace2:label");
 
     // translate element using interpolation
+    // https://www.i18next.com/translation-function/interpolation
     document.$("label#l2").innerHTML = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
+
+    addLine(i18next.t('namespace3:key', {count: 0})); // -> "items"
+    addLine(i18next.t('namespace3:key', {count: 1})); // -> "item"
+    addLine(i18next.t('namespace3:key', {count: 5})); // -> "items"
+    addLine(i18next.t('namespace3:key', {count: 100})); // -> "items"
+    addLine(i18next.t('namespace3:keyWithCount', {count: 0})); // -> "0 items"
+    addLine(i18next.t('namespace3:keyWithCount', {count: 1})); // -> "1 item"
+    addLine(i18next.t('namespace3:keyWithCount', {count: 5})); // -> "5 items"
+    addLine(i18next.t('namespace3:keyWithCount', {count: 100})); // -> "100 items"
 });
+
+/**
+ * Add line to plaintext
+ * @param string str
+ */
+function addLine(str)
+{
+    document.$("plaintext").plaintext.appendLine(str);
+}
 
 </script>
 </head>
@@ -89,5 +115,6 @@ document.on("ready", function() {
     <button>change language</button>
     <label #l1 />
     <label #l2 />
+    <plaintext />
 </body>
 </html>
