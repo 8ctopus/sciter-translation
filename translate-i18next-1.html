@@ -1,5 +1,19 @@
 ﻿<html>
 <head>
+<style>
+
+body {
+    flow: vertical;
+    border-spacing: 0.7em;
+}
+
+body > :not(button) {
+    margin-right: *;
+    text-align: left;
+    width: *;
+}
+
+</style>
 <script src="js/i18next.js"></script>
 <script>
 
@@ -32,7 +46,8 @@ document.on("ready", function() {
                     //button: "changer la langue",
                 },
                 namespace2: {
-                    label: "bonjour depuis le 2ème namespace",
+                    label: "Bonjour depuis le 2ème namespace.",
+                    catsanddogs: "Il y a {{cats}} chats et {{dogs}} chiens dans la pièce.",
                 }
             },
         }
@@ -59,7 +74,10 @@ document.on("ready", function() {
     document.$("button").innerHTML = next.t("button", "changer la langue");
 
     // translate element using another namespace:key
-    document.$("label").innerHTML = next.t("namespace2:label");
+    document.$("label#l1").innerHTML = next.t("namespace2:label");
+
+    // translate element using interpolation
+    document.$("label#l2").innerHTML = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
 });
 
 </script>
@@ -69,6 +87,7 @@ document.on("ready", function() {
     <span #hello> hello </span>
     <span #howareyou> how are you today? </span>
     <button>change language</button>
-    <label />
+    <label #l1 />
+    <label #l2 />
 </body>
 </html>
