@@ -10,16 +10,29 @@ document.on("ready", function() {
     // init translation system
     // returns a promise (asynchronous) unless initImmediate is set to false
     next.init({
-        initImmediate: false,
-        lng: "fr",
         debug: true,
+
+        initImmediate: false,
+
+        lng: "fr",
+
+        ns: ['namespace1', 'namespace2'],
+
+        // namespace to use when only translation key is specified
+        defaultNS: 'namespace1',
+
         resources: {
             fr: {
-                translation: {
-                    "description": "Test de traduction basée sur i18next",
-                    "hello": "bonjour",
-                    "howareyou": "Comment allez-vous aujourd'hui?",
-                    "button": "changer la langue",
+                namespace1: {
+                    description: "Test de traduction basée sur i18next",
+                    hello: "bonjour",
+                    deep: {
+                        howareyou: "Comment allez-vous aujourd'hui?",
+                    },
+                    //button: "changer la langue",
+                },
+                namespace2: {
+                    label: "bonjour depuis le 2ème namespace",
                 }
             },
         }
@@ -32,10 +45,21 @@ document.on("ready", function() {
     });
 
     // since the call to init was synchronous, translation can start now
+
+    // translate element with key
     document.$("p").innerHTML = next.t("description");
-    document.$("span#hello").innerHTML = next.t("hello");
-    document.$("span#howareyou").innerHTML = next.t("howareyou");
-    document.$("button").innerHTML = next.t("button");
+
+    // translate element with namespace:key
+    document.$("span#hello").innerHTML = next.t("namespace1:hello");
+
+    // translate element with namespace:key.key
+    document.$("span#howareyou").innerHTML = next.t("namespace1:deep.howareyou");
+
+    // translate element with default value
+    document.$("button").innerHTML = next.t("button", "changer la langue");
+
+    // translate element using another namespace:key
+    document.$("label").innerHTML = next.t("namespace2:label");
 });
 
 </script>
@@ -45,5 +69,6 @@ document.on("ready", function() {
     <span #hello> hello </span>
     <span #howareyou> how are you today? </span>
     <button>change language</button>
+    <label />
 </body>
 </html>
