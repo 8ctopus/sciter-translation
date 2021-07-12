@@ -1,6 +1,8 @@
 # sciter translation demo app
 
-This is a [sciter.js](https://sciter.com/) translation demo app.
+This is a [sciter.js](https://sciter.com/) demo app that explores different ways to translate a sciter app.
+
+For a working translation engine, check [sciter-i18n](https://github.com/8ctopus/sciter-i18n).
 
 ## get started
 
