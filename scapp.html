@@ -5,60 +5,11 @@
 >
 <head>
 <title>sciter translation demo</title>
-<script src="js/utils.js" />
-<script type="module">
-
-// import functions from sciter libraries
-import * as sys from "@sys";
-import {encode,decode} from "@sciter";
-
-// list current directory
-let list = sys.fs.$readdir(".");
-
-let files = [];
-
-// iterate directory contents
-for (let file of list) {
-    // ignore directories
-    if (file.type !== 1)
-        continue;
-
-    // keep only grid*.html files
-    if (file.name.startsWith("translate") && file.name.endsWith(".html")) {
-        file = file.name.replace("translate-", "");
-        file = file.replace(".html", "");
-        files.push(file);
-    }
-}
-
-// get element to append buttons
-let parent = document.$("header");
-
-// loop through files
-files.forEach(function (file) {
-    // create button
-    let button = "<button>" + file + "</button>";
-
-    // add button to ui
-    parent.append(button);
-});
-
-// set all buttons onclick event
-document.on("click", "header > button", function(event, button) {
-    // get file name from button
-    let file = "translate-" + button.innerHTML + ".html";
-
-    // get element to insert code in
-    let include = document.$("iframe");
-
-    // insert code
-    include.setAttribute("src", file);
-});
-
-</script>
 <style>
 
-body {
+@import url(vendor/8ctopus/sciter-logger/src/logger.css);
+
+body > iframe {
     margin: 0;
 
     vertical-align: middle;
@@ -85,12 +36,92 @@ iframe {
 }
 
 </style>
+<script type="module">
+
+// import functions from sciter libraries
+import * as sys from "@sys";
+import {encode,decode} from "@sciter";
+
+import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
+import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
+
+// list current directory
+const list = sys.fs.$readdir(".");
+
+let files = [];
+
+// iterate directory contents
+for (let file of list) {
+    // ignore directories
+    if (file.type !== 1)
+        continue;
+
+    // keep only grid*.html files
+    if (file.name.startsWith("translate") && file.name.endsWith(".html")) {
+        file = file.name.replace("translate-", "");
+        file = file.replace(".html", "");
+        files.push(file);
+    }
+}
+
+// get element to append buttons
+const parent = document.$("header");
+
+// loop through files
+files.forEach(function (file) {
+    // create button
+    const button = "<button>" + file + "</button>";
+
+    // add button to ui
+    parent.append(button);
+});
+
+document.on("ready", function() {
+    // initialize logger
+    logger.init("", false);
+
+    // subscribe to logger messages
+    logger.subscribe(function(level, message) {
+        const log = document.$("plaintext#logger");
+
+        log.append(JSX(level, {}, [message]));
+
+        // scroll to last item
+        log.lastElementChild.scrollIntoView({behavior: "smooth"});
+    });
+
+    // attach logger to console
+    logger.attach();
+
+    // capture unhandled exceptions
+    logger.capture();
+
+    // add support for F5 reload
+    utils.addReloadWindow();
+
+    // center window on screen
+    utils.centerWindow();
+});
+
+// set all buttons onclick event
+document.on("click", "header > button", function(event, button) {
+    // get file name from button
+    let file = "translate-" + button.innerHTML + ".html";
+
+    // get element to insert code in
+    let include = document.$("iframe");
+
+    // insert code
+    include.setAttribute("src", file);
+});
+
+</script>
 </head>
 <header>
     <!-- buttons -->
 </header>
 <body>
-    <iframe src="">
-    </iframe>
+    <iframe src="" />
+    <plaintext #logger readonly />
 </body>
 </html>
