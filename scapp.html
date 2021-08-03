@@ -45,38 +45,11 @@ import {encode,decode} from "@sciter";
 import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
-// list current directory
-const list = sys.fs.$readdir(".");
+document.on("ready", function(event, element) {
+    // skip document ready from iframe
+    if (element.parentElement)
+        return;
 
-let files = [];
-
-// iterate directory contents
-for (let file of list) {
-    // ignore directories
-    if (file.type !== 1)
-        continue;
-
-    // keep only grid*.html files
-    if (file.name.startsWith("translate") && file.name.endsWith(".html")) {
-        file = file.name.replace("translate-", "");
-        file = file.replace(".html", "");
-        files.push(file);
-    }
-}
-
-// get element to append buttons
-const parent = document.$("header");
-
-// loop through files
-files.forEach(function (file) {
-    // create button
-    const button = "<button>" + file + "</button>";
-
-    // add button to ui
-    parent.append(button);
-});
-
-document.on("ready", function() {
     // initialize logger
     logger.init("", false);
 
@@ -101,6 +74,37 @@ document.on("ready", function() {
 
     // center window on screen
     utils.centerWindow();
+
+    // list current directory
+    const list = sys.fs.$readdir(".");
+
+    let files = [];
+
+    // iterate directory contents
+    for (let file of list) {
+        // ignore directories
+        if (file.type !== 1)
+            continue;
+
+        // keep only grid*.html files
+        if (file.name.startsWith("translate") && file.name.endsWith(".html")) {
+            file = file.name.replace("translate-", "");
+            file = file.replace(".html", "");
+            files.push(file);
+        }
+    }
+
+    // get element to append buttons
+    const parent = document.$("header");
+
+    // loop through files
+    files.forEach(function (file) {
+        // create button
+        const button = "<button>" + file + "</button>";
+
+        // add button to ui
+        parent.append(button);
+    });
 });
 
 // set all buttons onclick event
