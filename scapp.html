@@ -46,7 +46,7 @@ import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
 document.on("ready", function(event, element) {
-    // skip document ready from iframe
+    // skip iframe document ready event
     if (element.parentElement)
         return;
 

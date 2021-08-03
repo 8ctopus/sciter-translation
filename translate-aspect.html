@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+<style>
+
+[data-i18n] {
+    aspect: translate;
+}
+
+</style>
+<script>
+
+function translate()
+{
+    const dict = {
+        "description": "Test de traduction basé sur aspect",
+        "hello": "bonjour",
+        "howareyou": "comment allez-vous aujourd'hui?",
+        "button": "changer la langue",
+    };
+
+    // get element tr attribute
+    const id = this.attributes["data-i18n"];
+
+    // translate element
+    this.innerText = dict[id];
+}
+
+</script>
+</head>
+<body>
+    <p data-i18n="description"> Testing translation using aspect </p>
+    <span data-i18n="hello"> hello </span>
+    <span data-i18n="howareyou"> how are you today? </span>
+    <button data-i18n="button">change language</button>
+</body>
+</html>
