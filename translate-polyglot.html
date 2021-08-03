@@ -6,16 +6,16 @@
 var polyglot = new Polyglot();
 
 polyglot.extend({
-    "description": "Test de traduction basée sur polyglot",
+    "description": "Test de traduction basé sur polyglot",
     "hello": "bonjour %{name},",
     "howareyou": "comment allez-vous aujourd'hui?",
     "button": "changer la langue",
 });
 
-document.$("p").innerHTML = polyglot.t("description");
-document.$("span#hello").innerHTML = polyglot.t("hello", {"name": "sciter"});
+document.$("p").innerHTML              = polyglot.t("description");
+document.$("span#hello").innerHTML     = polyglot.t("hello", {"name": "sciter"});
 document.$("span#howareyou").innerHTML = polyglot.t("howareyou");
-document.$("button").innerHTML = polyglot.t("button");
+document.$("button").innerHTML         = polyglot.t("button");
 
 </script>
 </head>
