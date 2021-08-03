@@ -70,23 +70,23 @@ document.on("ready", function() {
 
     // translate element with key
     // https://www.i18next.com/translation-function/essentials
-    document.$("p").innerHTML = next.t("description");
+    document.$("p").innerText = next.t("description");
 
     // translate element with namespace:key
-    document.$("span#hello").innerHTML = next.t("namespace1:hello");
+    document.$("span#hello").innerText = next.t("namespace1:hello");
 
     // translate element with namespace:key.key
-    document.$("span#howareyou").innerHTML = next.t("namespace1:deep.howareyou");
+    document.$("span#howareyou").innerText = next.t("namespace1:deep.howareyou");
 
     // translate element with default value
-    document.$("button").innerHTML = next.t("button", "changer la langue");
+    document.$("button").innerText = next.t("button", "changer la langue");
 
     // translate element using another namespace:key
-    document.$("label#l1").innerHTML = next.t("namespace2:label");
+    document.$("label#l1").innerText = next.t("namespace2:label");
 
     // translate element using interpolation
     // https://www.i18next.com/translation-function/interpolation
-    document.$("label#l2").innerHTML = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
+    document.$("label#l2").innerText = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
 
     // plurals (not fully working for some reason)
     addLine(i18next.t("namespace3:key", {count: 0})); // -> "items"

@@ -68,10 +68,10 @@ function translate()
 
     console.log(`Init i18next (2) - OK`);
 
-    document.$("p").innerHTML              = i18next.t("description");
-    document.$("span#hello").innerHTML     = i18next.t("hello");
-    document.$("span#howareyou").innerHTML = i18next.t("howareyou");
-    document.$("button").innerHTML         = i18next.t("button");
+    document.$("p").innerText              = i18next.t("description");
+    document.$("span#hello").innerText     = i18next.t("hello");
+    document.$("span#howareyou").innerText = i18next.t("howareyou");
+    document.$("button").innerText         = i18next.t("button");
 }
 
 document.on("ready", function() {

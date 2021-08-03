@@ -70,10 +70,10 @@ function translate()
 
     console.log(`Init i18next (2) - OK`);
 
-    document.$("p").innerHTML              = next.t("description");
-    document.$("span#hello").innerHTML     = next.t("hello");
-    document.$("span#howareyou").innerHTML = next.t("howareyou");
-    document.$("button").innerHTML         = next.t("button");
+    document.$("p").innerText              = next.t("description");
+    document.$("span#hello").innerText     = next.t("hello");
+    document.$("span#howareyou").innerText = next.t("howareyou");
+    document.$("button").innerText         = next.t("button");
 }
 
 document.on("ready", function() {

@@ -23,10 +23,10 @@ $.i18n().load({
     "button": "changer la langue",
 }, 'fr');
 
-document.$("p").innerHTML = $.i18n("description");
-document.$("span#hello").innerHTML = $.i18n("hello", {"name": "sciter"});
-document.$("span#howareyou").innerHTML = $.i18n("howareyou");
-document.$("button").innerHTML = $.i18n("button");
+document.$("p").innerText = $.i18n("description");
+document.$("span#hello").innerText = $.i18n("hello", {"name": "sciter"});
+document.$("span#howareyou").innerText = $.i18n("howareyou");
+document.$("button").innerText = $.i18n("button");
 
 Zepto(function($){
   alert('Ready to Zepto!')
