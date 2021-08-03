@@ -17,6 +17,9 @@ body > :not(button) {
 <script src="js/i18next.js"></script>
 <script>
 
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
 document.on("ready", function() {
     // create i18next object
     const next = i18next;

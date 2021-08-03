@@ -3,7 +3,10 @@
 <script src="js/polyglot.js"></script>
 <script>
 
-var polyglot = new Polyglot();
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
+const polyglot = new Polyglot();
 
 polyglot.extend({
     "description": "Test de traduction basé sur polyglot",

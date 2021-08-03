@@ -4,6 +4,12 @@ https://sciter.com/forums/topic/localization/
 <html>
 <head>
 <include src="sgml-words.html" />
+<script>
+
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
+</script>
 </head>
 <body>
     <p> &test; </p>

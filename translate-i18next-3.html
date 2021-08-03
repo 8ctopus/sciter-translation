@@ -8,6 +8,9 @@ import i18next from 'https://deno.land/x/i18next/index.js';
 import * as sys from "@sys";
 import {encode,decode} from "@sciter";
 
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
 var _init = false;
 
 async function init()

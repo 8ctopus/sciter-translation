@@ -5,6 +5,9 @@ https://sciter.com/forums/topic/localization/#post-44991
 <head>
 <script>
 
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
 const dict = {
     "description": "Test de traduction basé sur attribute",
     "hello": "bonjour",

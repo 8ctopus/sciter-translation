@@ -9,6 +9,9 @@
 </style>
 <script>
 
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
 function translate()
 {
     const dict = {

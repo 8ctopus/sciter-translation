@@ -5,6 +5,9 @@
 <script src="js/jquery.i18n.js"></script>
 <script>
 
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
 console.log($("#hello"));
 
 $.i18n({

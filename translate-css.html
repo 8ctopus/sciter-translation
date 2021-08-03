@@ -4,6 +4,9 @@
 <style src="css/fr.css" forlang="fr" />
 <script>
 
+// get console from iframe parent
+console = Window.this.document.globalThis.console;
+
 document.$("button").on("click", function() {
 //    console.log("lang - " + Window.this.lang);
 //    lang = (lang == "fr") ? "en" : "fr";
