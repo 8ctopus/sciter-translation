@@ -1,9 +1,15 @@
-REM sciter 4.4.8.5
-curl -LO https://github.com/c-smile/sciter-js-sdk/raw/4c175a55aa6e12d1223896471924e6c3e2d633b1/bin/windows/x32/scapp.exe
-curl -LO https://github.com/c-smile/sciter-js-sdk/raw/4c175a55aa6e12d1223896471924e6c3e2d633b1/bin/windows/x32/inspector.exe
-curl -LO https://github.com/c-smile/sciter-js-sdk/raw/4c175a55aa6e12d1223896471924e6c3e2d633b1/bin/windows/x32/sciter.dll
+REM sciter 4.4.8.17bis
+SET sciterSDK="be2be52df10ebe501f75901df8ef2467ed710d00"
 
-REM sciter package manager 0.1.4
-curl -LO https://github.com/8ctopus/sciter-package-manager/releases/download/0.1.4/spm.phar
+mkdir bin\win-x32
 
-pause
+cd bin\win-x32
+
+curl -LO https://github.com/c-smile/sciter-js-sdk/raw/%sciterSDK%/bin/windows/x32/scapp.exe
+curl -LO https://github.com/c-smile/sciter-js-sdk/raw/%sciterSDK%/bin/windows/x32/inspector.exe
+curl -LO https://github.com/c-smile/sciter-js-sdk/raw/%sciterSDK%/bin/windows/x32/sciter.dll
+
+cd ..
+
+REM sciter package manager 0.2.2
+curl -LO https://github.com/8ctopus/sciter-package-manager/releases/download/0.2.2/spm.phar
