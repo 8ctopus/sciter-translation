@@ -7,7 +7,7 @@ For a working translation engine, check [sciter-i18n](https://github.com/8ctopus
 ## demo
 
 - git clone the repository
-- run `install.bat` to download the latest sciter binaries and the sciter package manager
-- install packages `php spm.phar install`
-- run `start.bat`
-- to refresh the app after changes to the html/css click `F5`
+- on Linux/Mac `chmod +x install.sh start.sh`
+- run `install.bat` (Win) or `./install.sh` (Linux/Mac) to download the latest sciter binaries and the sciter package manager
+- install packages `php bin/spm.phar install`
+- run `start.bat` (Win) or `./start.sh` (Linux/Mac)

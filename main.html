@@ -45,35 +45,36 @@ import {encode,decode} from "@sciter";
 import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
-document.on("ready", function(event, element) {
-    // skip iframe document ready event
-    if (element.parentElement)
-        return;
+// initialize logger
+logger.init();
 
-    // initialize logger
-    logger.init("", false);
+// attach logger to console
+logger.attach();
 
+// capture unhandled exceptions
+logger.capture(unhandledExceptionHandler);
+
+document.ready = function() {
     // subscribe to logger messages
-    logger.subscribe(function(level, message) {
-        const log = document.$("plaintext#logger");
+    logger.plaintext(document.$("plaintext#logger"));
 
-        log.append(JSX(level, {}, [message]));
-
-        // scroll to last item
-        log.lastElementChild.scrollIntoView({behavior: "smooth"});
-    });
-
-    // attach logger to console
-    logger.attach();
-
-    // capture unhandled exceptions
-    logger.capture();
+    // log sciter version
+    console.debug(utils.sciterInfo());
 
     // add support for F5 reload
     utils.addReloadWindow();
 
+    // close window on escape key press
+    utils.closeWindowOnEscape(Window.this);
+
     // center window on screen
-    utils.centerWindow();
+    utils.centerWindow(Window.this, "screen");
+
+    // bring window to front
+    //utils.windowToFront(Window.this);
+
+    // bring window to front and set input focus
+    Window.this.activate(true);
 
     // list current directory
     const list = sys.fs.$readdir(".");
@@ -105,7 +106,7 @@ document.on("ready", function(event, element) {
         // add button to ui
         parent.append(button);
     });
-});
+}
 
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
@@ -118,6 +119,16 @@ document.on("click", "header > button", function(event, button) {
     // insert code
     include.setAttribute("src", file);
 });
+/**
+ * Unhandled exception handler
+ * @param  Error|String e
+ * @return void
+ */
+function unhandledExceptionHandler(e)
+{
+    // log exception using exception if it exists, error otherwise
+    typeof console.exception === "function" ? console.exception(e) : console.error(e);
+}
 
 </script>
 </head>
