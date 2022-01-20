@@ -54,8 +54,12 @@ Logger.attach();
 // capture unhandled exceptions
 Logger.capture();
 
-document.on("ready", function() {
-    // subscribe to logger messages
+document.on("ready", function(event, element) {
+    // ignore iframe ready event
+    if (element.parentElement)
+        return;
+
+    // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
 
     // log sciter version
