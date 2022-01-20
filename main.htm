@@ -54,7 +54,7 @@ Logger.attach();
 // capture unhandled exceptions
 Logger.capture();
 
-document.ready = function() {
+document.on("ready", function() {
     // subscribe to logger messages
     Logger.plaintext(document.$("plaintext#logger"));
 
@@ -103,7 +103,7 @@ document.ready = function() {
         // add button to ui
         parent.append(button);
     });
-}
+});
 
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
