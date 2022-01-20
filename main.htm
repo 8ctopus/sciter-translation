@@ -40,7 +40,6 @@ iframe {
 
 // import functions from sciter libraries
 import * as sys from "@sys";
-import {encode,decode} from "@sciter";
 
 import Logger from "node_modules/sciter-logger/src/logger.js";
 import * as Utils from "node_modules/sciter-utils/src/utils.js";
@@ -80,7 +79,7 @@ document.on("ready", function(event, element) {
     // list current directory
     const list = sys.fs.$readdir(".");
 
-    let files = [];
+    const files = [];
 
     // iterate directory contents
     for (let file of list) {
@@ -100,22 +99,22 @@ document.on("ready", function(event, element) {
     const parent = document.$("header");
 
     // loop through files
-    files.forEach(function (file) {
+    for (const file of files) {
         // create button
         const button = "<button>" + file + "</button>";
 
         // add button to ui
         parent.append(button);
-    });
+    }
 });
 
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
     // get file name from button
-    let file = "translate-" + button.innerHTML + ".html";
+    const file = "translate-" + button.innerHTML + ".html";
 
     // get element to insert code in
-    let include = document.$("iframe");
+    const include = document.$("iframe");
 
     // insert code
     include.setAttribute("src", file);
