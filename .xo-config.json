@@ -110,7 +110,7 @@
         "no-else-return": "error",
         "no-empty-function": "error",
         "no-global-assign": "warn",
-        "no-inline-comments": "error",
+        "no-inline-comments": "warn",
         "no-invalid-this": "off",
         "no-lone-blocks": "error",
         "no-mixed-operators": "error",
