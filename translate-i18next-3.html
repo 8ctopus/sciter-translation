@@ -48,7 +48,7 @@ async function init() {
 
     try {
         // wait for promise
-        const result = await promise;
+        await promise;
 
         _init = true;
 
@@ -69,10 +69,10 @@ function translate() {
 
     console.log("Init i18next (2) - OK");
 
-    document.$("p").innerText = i18next.t("description");
-    document.$("span#hello").innerText = i18next.t("hello");
-    document.$("span#howareyou").innerText = i18next.t("howareyou");
-    document.$("button").innerText = i18next.t("button");
+    document.$("p").textContent = i18next.t("description");
+    document.$("span#hello").textContent = i18next.t("hello");
+    document.$("span#howareyou").textContent = i18next.t("howareyou");
+    document.$("button").textContent = i18next.t("button");
 }
 
 document.on("ready", function() {

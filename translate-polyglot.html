@@ -6,7 +6,7 @@
 // get console from iframe parent
 console = Window.this.document.globalThis.console;
 
-const polyglot = new Polyglot();
+const polyglot = new globalThis.Polyglot();
 
 polyglot.extend({
     description: "Test de traduction basé sur polyglot",

@@ -22,7 +22,7 @@ console = Window.this.document.globalThis.console;
 
 document.on("ready", function() {
     // create i18next object
-    const next = i18next;
+    const next = globalThis.i18next;
 
     // init translation system
     // returns a promise (asynchronous) unless initImmediate is set to false
@@ -61,7 +61,7 @@ document.on("ready", function() {
                 },
             },
         },
-    }, function(err, t) {
+    }, function(err, _t) {
         // callback when initialization completed
         if (err)
             console.log(`Init i18next - FAILED - ${err}`);
@@ -92,18 +92,18 @@ document.on("ready", function() {
     document.$("label#l2").textContent = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
 
     // plurals (not fully working for some reason)
-    addLine(i18next.t("namespace3:key", {count: 0})); // -> "items"
-    addLine(i18next.t("namespace3:key", {count: 1})); // -> "item"
-    addLine(i18next.t("namespace3:key", {count: 5})); // -> "items"
-    addLine(i18next.t("namespace3:key", {count: 100})); // -> "items"
-    addLine(i18next.t("namespace3:keyWithCount", {count: 0})); // -> "0 items"
-    addLine(i18next.t("namespace3:keyWithCount", {count: 1})); // -> "1 item"
-    addLine(i18next.t("namespace3:keyWithCount", {count: 5})); // -> "5 items"
-    addLine(i18next.t("namespace3:keyWithCount", {count: 100})); // -> "100 items"
+    addLine(next.t("namespace3:key", {count: 0})); // -> "items"
+    addLine(next.t("namespace3:key", {count: 1})); // -> "item"
+    addLine(next.t("namespace3:key", {count: 5})); // -> "items"
+    addLine(next.t("namespace3:key", {count: 100})); // -> "items"
+    addLine(next.t("namespace3:keyWithCount", {count: 0})); // -> "0 items"
+    addLine(next.t("namespace3:keyWithCount", {count: 1})); // -> "1 item"
+    addLine(next.t("namespace3:keyWithCount", {count: 5})); // -> "5 items"
+    addLine(next.t("namespace3:keyWithCount", {count: 100})); // -> "100 items"
 
     // fallback
     // when key value does not exist, the key is returned
-    addLine(i18next.t("notexistingkey"));
+    addLine(next.t("notexistingkey"));
 });
 
 /**
