@@ -1,6 +1,6 @@
 ﻿<html>
 <head>
-<script src="js/polyglot.js"></script>
+<script src="js/polyglot.js" />
 <script>
 
 // get console from iframe parent
@@ -9,16 +9,16 @@ console = Window.this.document.globalThis.console;
 const polyglot = new Polyglot();
 
 polyglot.extend({
-    "description": "Test de traduction basé sur polyglot",
-    "hello": "bonjour %{name},",
-    "howareyou": "comment allez-vous aujourd'hui?",
-    "button": "changer la langue",
+    description: "Test de traduction basé sur polyglot",
+    hello: "bonjour %{name},",
+    howareyou: "comment allez-vous aujourd'hui?",
+    button: "changer la langue",
 });
 
-document.$("p").innerText              = polyglot.t("description");
-document.$("span#hello").innerText     = polyglot.t("hello", {"name": "sciter"});
-document.$("span#howareyou").innerText = polyglot.t("howareyou");
-document.$("button").innerText         = polyglot.t("button");
+document.$("p").textContent = polyglot.t("description");
+document.$("span#hello").textContent = polyglot.t("hello", {name: "sciter"});
+document.$("span#howareyou").textContent = polyglot.t("howareyou");
+document.$("button").textContent = polyglot.t("button");
 
 </script>
 </head>

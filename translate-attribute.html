@@ -9,21 +9,21 @@ https://sciter.com/forums/topic/localization/#post-44991
 console = Window.this.document.globalThis.console;
 
 const dict = {
-    "description": "Test de traduction basé sur attribute",
-    "hello": "bonjour",
-    "howareyou": "comment allez-vous aujourd'hui?",
-    "button": "changer la langue",
+    description: "Test de traduction basé sur attribute",
+    hello: "bonjour",
+    howareyou: "comment allez-vous aujourd'hui?",
+    button: "changer la langue",
 };
 
 document.on("ready", function() {
     // get all html elements
-    document.$$("*[tr]").map(function(element) {
+    for (const element of document.$$("*[tr]")) {
         // get element tr attribute
         const id = element.getAttribute("tr");
 
         // translate element
-        element.innerText = dict[id];
-    });
+        element.textContent = dict[id];
+    }
 });
 
 </script>

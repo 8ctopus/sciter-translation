@@ -60,36 +60,36 @@ document.on("ready", function() {
                     keyWithCount_plural: "{{count}} items",
                 },
             },
-        }
+        },
     }, function(err, t) {
         // callback when initialization completed
         if (err)
             console.log(`Init i18next - FAILED - ${err}`);
         else
-            console.log(`Init i18next - OK`);
+            console.log("Init i18next - OK");
     });
 
     // since the call to init was synchronous, translation can start now
 
     // translate element with key
     // https://www.i18next.com/translation-function/essentials
-    document.$("p").innerText = next.t("description");
+    document.$("p").textContent = next.t("description");
 
     // translate element with namespace:key
-    document.$("span#hello").innerText = next.t("namespace1:hello");
+    document.$("span#hello").textContent = next.t("namespace1:hello");
 
     // translate element with namespace:key.key
-    document.$("span#howareyou").innerText = next.t("namespace1:deep.howareyou");
+    document.$("span#howareyou").textContent = next.t("namespace1:deep.howareyou");
 
     // translate element with default value
-    document.$("button").innerText = next.t("button", "changer la langue");
+    document.$("button").textContent = next.t("button", "changer la langue");
 
     // translate element using another namespace:key
-    document.$("label#l1").innerText = next.t("namespace2:label");
+    document.$("label#l1").textContent = next.t("namespace2:label");
 
     // translate element using interpolation
     // https://www.i18next.com/translation-function/interpolation
-    document.$("label#l2").innerText = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
+    document.$("label#l2").textContent = next.t("namespace2:catsanddogs", {cats: 5, dogs: 3});
 
     // plurals (not fully working for some reason)
     addLine(i18next.t("namespace3:key", {count: 0})); // -> "items"
@@ -108,10 +108,9 @@ document.on("ready", function() {
 
 /**
  * Add line to plaintext
- * @param string str
+ * @param {string} str
  */
-function addLine(str)
-{
+function addLine(str) {
     document.$("plaintext").plaintext.appendLine(str);
 }
 
