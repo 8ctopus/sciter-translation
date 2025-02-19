@@ -6,6 +6,18 @@ For a working translation engine, check [sciter-i18n](https://github.com/8ctopus
 
 _Note_: sciter 4.4.8.19 introduced its own [translation system](https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/reactor/JSX-i18n.md).
 
+## translation engines tested
+
+- sciter `aspect`
+- html data attribute
+- translation using css
+- using [i18next](https://github.com/i18next/i18next) js library
+- using jquery-i18n js library (not working)
+- using [polyglot](https://github.com/airbnb/polyglot.js) js library
+- and finally using sgml entities
+
+And here's a good reference about localization in sciter.js: https://sciter.com/forums/topic/localization/
+
 ## demo
 
 - git clone the repository
