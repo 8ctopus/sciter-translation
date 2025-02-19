@@ -4,7 +4,7 @@ This is a [sciter.js](https://sciter.com/) project that explores different ways 
 
 For a working translation engine, check [sciter-i18n](https://github.com/8ctopus/sciter-i18n).
 
-Note: sciter 4.4.8.19 introduced its own [translation system](https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/reactor/JSX-i18n.md).
+_Note_: sciter 4.4.8.19 introduced its own [translation system](https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/reactor/JSX-i18n.md).
 
 ## demo
 
